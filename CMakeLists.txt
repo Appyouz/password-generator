@@ -13,9 +13,11 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(SOURCE_FILES 
   src/main.cpp
   src/password_manager.cpp
+  src/password_options.cpp
   )
 set (HEADER_FILES
   include/password_manager.h
+  include/password_options.h
   )
 
 

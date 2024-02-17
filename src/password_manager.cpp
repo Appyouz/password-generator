@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <unordered_set>
+
 bool PasswordManager::meetsRequirements(const std::string &password) {
   bool hasUppercase{false};
   bool hasLowercase{false};
