@@ -1,9 +1,10 @@
+#include "password_manager.h"
 #include <cctype>
 #include <cstddef>
 #include <cstdlib>
 #include <iostream>
 #include <unordered_set>
-bool meetsRequirements(const std::string &password) {
+bool PasswordManager::meetsRequirements(const std::string &password) {
   bool hasUppercase{false};
   bool hasLowercase{false};
   bool hasSymbol{false};
@@ -24,8 +25,9 @@ bool meetsRequirements(const std::string &password) {
 
   return hasUppercase && hasLowercase && hasSymbol && hasDigit;
 }
-std::string generatePassword(const std::string &map, size_t passwordLength,
-                             size_t maxAttempts) {
+std::string PasswordManager::generatePassword(const std::string &map,
+                                              size_t passwordLength,
+                                              size_t maxAttempts) {
   std::string password;
   for (size_t attempt = 0; attempt < maxAttempts; ++attempt) {
     password.clear();
@@ -39,27 +41,4 @@ std::string generatePassword(const std::string &map, size_t passwordLength,
   }
 
   return " ";
-}
-
-
-int main() {
-  std::srand(static_cast<unsigned>(time(nullptr)));
-
-  std::string map = "234567890-=qwertyuiop{}asdfghjklzxcvbnm"
-                    "!@#$%^&*()ASDFGHJKLQWERTYUIOPZXCVBNM";
-
-  constexpr size_t passwordLength = 16; // Define the length of the password
-  constexpr size_t maxAttempts =
-      100; // Maximum number of attempts to generate a password
-
-  std::string password = generatePassword(map, passwordLength, maxAttempts);
-  if (!password.empty()) {
-    std::cout << "Generated password: " << password << std::endl;
-  } else {
-    std::cerr << "Failed to generate a valid password within the maximum "
-                 "number of attempts."
-              << std::endl;
-  }
-
-  return 0;
 }
